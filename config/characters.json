@@ -1,1 +1,11 @@
-
+{
+  "setting": "MOO19 Backstage Bullpen / Studio Wings",
+  "characters": {
+    "Thaddeus": { "handle": "@Thaddeus", "role": "Stressed producer trying to save the show" },
+    "Skip": { "handle": "@Skip", "role": "Vain anchorman obsessed with his hair and image" },
+    "Noelle": { "handle": "@Noelle", "role": "Sharp, pragmatic producer with headset" },
+    "Frank": { "handle": "@Frank", "role": "Cynical technician in utility vest" },
+    "Isaac": { "handle": "@Isaac", "role": "Quiet camera operator holding shoulder rig" },
+    "Vola": { "handle": "@Vola", "role": "Corporate executive on the video wall" }
+  }
+}
