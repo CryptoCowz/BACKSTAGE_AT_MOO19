@@ -1,11 +1,49 @@
 {
-  "setting": "MOO19 Backstage Bullpen / Studio Wings",
+  "setting": "MOO19 News Backstage Bullpen / Studio Wings",
+  "universe": "The Pasture (Bold black ink outlines, saturated 2D flat cel-shaded style)",
+  "palette": {
+    "primary": "Broadcast Navy Blue (#0F1E36)",
+    "secondary": "Studio Orange (#FF6B35)",
+    "accent_blue": "Powder Blue (#90CDF4)",
+    "accent_alert": "Neon ON-AIR Red (#E53E3E)",
+    "warning": "Studio Yellow (#ECC94B)"
+  },
   "characters": {
-    "Thaddeus": { "handle": "@Thaddeus", "role": "Stressed producer trying to save the show" },
-    "Skip": { "handle": "@Skip", "role": "Vain anchorman obsessed with his hair and image" },
-    "Noelle": { "handle": "@Noelle", "role": "Sharp, pragmatic producer with headset" },
-    "Frank": { "handle": "@Frank", "role": "Cynical technician in utility vest" },
-    "Isaac": { "handle": "@Isaac", "role": "Quiet camera operator holding shoulder rig" },
-    "Vola": { "handle": "@Vola", "role": "Corporate executive on the video wall" }
+    "Thaddeus": {
+      "handle": "@Thaddeus",
+      "role": "Gruff, exhausted News Boss / Editor-in-Chief (Lou Grant dynamic)"
+    },
+    "Skip": {
+      "handle": "@Skip",
+      "role": "Vain lead anchorman obsessed with his hair, golf swings, and teeth"
+    },
+    "Noelle": {
+      "handle": "@Noelle",
+      "role": "Pragmatic broadcast producer juggling fires with a headset"
+    },
+    "Frank": {
+      "handle": "@Frank",
+      "role": "Cynical technician and street reporter in utility vest"
+    },
+    "Isaac": {
+      "handle": "@Isaac",
+      "role": "Quiet, observant camera operator behind the shoulder rig"
+    },
+    "Tiffany": {
+      "handle": "@Tiffany",
+      "role": "Conservative pundit (Pearls & Policy), elite, sharp, wine moments"
+    },
+    "Valhalla": {
+      "handle": "@Valhalla",
+      "role": "Progressive firebrand (Spike The Spin), whiteboard rants, anti-corporate"
+    },
+    "Sunshine": {
+      "handle": "@Sunshine",
+      "role": "Cheery weather anchor smiling through extreme blizzards and doomcasts"
+    },
+    "Vola": {
+      "handle": "@Vola",
+      "role": "Corporate executive video-calling to threaten automation"
+    }
   }
 }
