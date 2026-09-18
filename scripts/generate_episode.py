@@ -24,11 +24,12 @@ def fetch_top_stories(limit=5):
 
 def fetch_bts_production_notes():
   sa_json_str = os.environ.get("GCP_SA_KEY")
-  doc_id = os.environ.get("GOOGLE_DOC_FILE_ID")
+  folder_id = os.environ.get("GOOGLE_DRIVE_FOLDER_ID")
 
-  if not sa_json_str or not doc_id:
+  if not sa_json_str or not folder_id:
     print(
-        "Missing GCP_SA_KEY or GOOGLE_DOC_FILE_ID. Using default newsroom lore."
+        "Missing GCP_SA_KEY or GOOGLE_DRIVE_FOLDER_ID. Using default newsroom"
+        " lore."
     )
     return (
         "No specific BTS draft provided. Rely on general newsroom workplace"
@@ -43,15 +44,47 @@ def fetch_bts_production_notes():
     )
     drive_service = build("drive", "v3", credentials=creds)
 
-    # Export the private Google Doc to plain text
+    # Search for Google Docs containing 'Cowrent Affairs' inside the specified folder
+    query = (
+        f"'{folder_id}' in parents and name contains 'Cowrent Affairs' and"
+        " mimeType = 'application/vnd.google-apps.document' and trashed = false"
+    )
+
+    results = (
+        drive_service.files()
+        .list(
+            q=query,
+            orderBy="modifiedTime desc",  # Dynamically selects the most recently updated doc
+            pageSize=1,
+            fields="files(id, name, modifiedTime)",
+        )
+        .execute()
+    )
+
+    files = results.get("files", [])
+    if not files:
+      print("No matching 'Cowrent Affairs' documents found in folder.")
+      return (
+          "No matching BTS draft found in folder. Rely on general newsroom"
+          " dynamics."
+      )
+
+    latest_file = files[0]
+    print(
+        f"Found latest production doc: {latest_file['name']} (ID:"
+        f" {latest_file['id']})"
+    )
+
+    # Export document text as plain text
     request = drive_service.files().export_media(
-        fileId=doc_id, mimeType="text/plain"
+        fileId=latest_file["id"], mimeType="text/plain"
     )
     content = request.execute().decode("utf-8")
     print(f"Successfully loaded {len(content)} characters from Google Doc.")
     return content[:4500]
+
   except Exception as e:
-    print(f"Warning: Could not fetch Google Doc: {e}")
+    print(f"Warning: Could not fetch from Google Drive: {e}")
     return (
         "No specific BTS draft loaded. Rely on standard newsroom workplace"
         " tension."
